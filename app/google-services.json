@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "480326605186",
+    "project_id": "access-master-1a578",
+    "storage_bucket": "access-master-1a578.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:480326605186:android:34ed2a6849bdcce20e979b",
+        "android_client_info": {
+          "package_name": "com.example.accessmaster"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAx-u3s8GgHY3lXl8eTefW09e391YIZT6k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

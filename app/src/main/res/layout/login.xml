@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back">
+
+    <!-- "Login" Text -->
+
+    <!-- "Enter Credentials" Text -->
+
+    <TextView
+        android:layout_width="206dp"
+        android:layout_height="73dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Login"
+        android:textColor="@android:color/white"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintHorizontal_bias="0.014"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.051"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <!-- Book Image -->
+
+    <!-- Email Input -->
+
+    <!-- Password Input -->
+
+    <!-- Login Button -->
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="407dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Enter Credentials For Logging In..! "
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.408"
+        app:layout_constraintWidth_percent="0.9" />
+
+    <ImageView
+        android:layout_width="247dp"
+        android:layout_height="219dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.066"
+        app:layout_constraintWidth_percent="0.6"
+        app:srcCompat="@drawable/book" />
+
+    <!-- Register Link -->
+
+    <!-- Forgot Password Link -->
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="288dp"
+        android:layout_height="0dp"
+        android:hint="Email ID"
+        android:inputType="textEmailAddress"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/button11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.525"
+        app:layout_constraintWidth_percent="0.7" />
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="288dp"
+        android:layout_height="51dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/button11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.617"
+        app:layout_constraintWidth_percent="0.7" />
+
+    <Button
+        android:id="@+id/button11"
+        android:layout_width="329dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button"
+        android:drawableLeft="@drawable/signup"
+        android:onClick="navigateToLockPin"
+        android:text="Login"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.935"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <TextView
+        android:id="@+id/link_register"
+        android:layout_width="329dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="No account yet? \n Create one"
+        android:textColor="#4169E1"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/button11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.808"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <TextView
+        android:id="@+id/link_forgotPassword"
+        android:layout_width="329dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Forgot Password?"
+        android:textColor="#4169E1"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/button11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.709"
+        app:layout_constraintWidth_percent="0.8" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

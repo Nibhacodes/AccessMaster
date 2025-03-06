@@ -1,0 +1,109 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/gradient"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!-- Enable/Disable Auto-Reply -->
+        <Switch
+            android:id="@+id/switch_auto_reply"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Enable Auto-Reply"
+            android:textSize="16sp" />
+
+        <!-- Enable/Disable Location Sharing -->
+        <Switch
+            android:id="@+id/switch_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Share Location in Replies"
+            android:textSize="16sp" />
+
+        <!-- Customize Keywords -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Customize Keywords and Replies"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edit_keyword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Keyword"
+            android:inputType="text"
+            android:padding="10dp" />
+
+        <EditText
+            android:id="@+id/edit_response"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Response"
+            android:inputType="text"
+            android:padding="10dp" />
+
+        <Button
+            android:id="@+id/button_add_response"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Response"
+            android:paddingVertical="12dp"
+            android:textSize="16sp" />
+
+        <!-- Saved Keywords -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Saved Keywords and Responses"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ListView
+            android:id="@+id/list_keywords"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scrollbars="vertical" />
+
+        <!-- Set Schedule -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Set Schedule for Auto-Reply"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TimePicker
+            android:id="@+id/time_picker_start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:timePickerMode="spinner" />
+
+        <TimePicker
+            android:id="@+id/time_picker_end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:timePickerMode="spinner" />
+
+        <Button
+            android:id="@+id/button_save_schedule"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save Schedule"
+            android:paddingVertical="12dp"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</ScrollView>

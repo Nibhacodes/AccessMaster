@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">AccessMaster</string>
+    <string name="profile_icon">profile_icon</string>
+    <string name="create_your_account">Create your Account</string>
+</resources>
