@@ -1,6 +1,7 @@
 package com.example.accessmaster.database;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "users")
@@ -12,6 +13,19 @@ public class User {
     private String email;
     private String mobile;
     private String password;
+
+    // ✅ Default constructor (Room uses this)
+    public User() {
+    }
+
+    // ✅ Add @Ignore to prevent Room from using this constructor
+    @Ignore
+    public User(String username, String email, String mobile, String password) {
+        this.username = username;
+        this.email = email;
+        this.mobile = mobile;
+        this.password = password;
+    }
 
     // Getters and Setters
     public int getId() {

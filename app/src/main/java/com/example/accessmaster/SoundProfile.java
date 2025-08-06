@@ -7,6 +7,7 @@ import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,11 @@ public class SoundProfile extends AppCompatActivity {
         // Initialize and handle the "Grant DND Permission" button
         Button btnGrantDnd = findViewById(R.id.btnGrantDndPermission);
         btnGrantDnd.setOnClickListener(view -> requestDndPermission());
+        ImageView backarrow = findViewById(R.id.backarrow);
+
+        backarrow.setOnClickListener(v -> {
+            finish(); // Navigates to the previous activity
+        });
     }
 
     private void requestDndPermission() {

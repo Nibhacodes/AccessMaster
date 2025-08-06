@@ -2,6 +2,7 @@ package com.example.accessmaster;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,7 @@ public class AccessContacts extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.accesscontacts);
 
+
         // Initialize SharedPreferences
         SharedPrefUtils.init(this); // Ensure this is done before fetching data
 
@@ -28,6 +30,11 @@ public class AccessContacts extends AppCompatActivity {
         // Initialize views
         instructionFormatText = findViewById(R.id.instruction_format);
         exampleSmsText = findViewById(R.id.example_sms);
+        ImageView backarrow = findViewById(R.id.backarrow);
+
+        backarrow.setOnClickListener(v -> {
+            finish(); // Navigates to the previous activity
+        });
 
         // Retrieve and display stored lock pin
         String savedLockPin = SharedPrefUtils.getLockPin();

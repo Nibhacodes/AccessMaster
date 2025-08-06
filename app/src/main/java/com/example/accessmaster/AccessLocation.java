@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,8 +26,14 @@ public class AccessLocation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.accesslocation);
+        ImageView backarrow = findViewById(R.id.backarrow);
+
+        backarrow.setOnClickListener(v -> {
+            finish(); // Navigates to the previous activity
+        });
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
 
         // Check if location permission is already granted
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&

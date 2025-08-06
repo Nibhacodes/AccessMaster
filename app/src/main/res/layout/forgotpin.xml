@@ -5,61 +5,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back"
-    tools:context=".ForgotPin">
+    android:background="@drawable/back">
 
-    <!-- Instructions -->
+    <ImageView
+        android:id="@+id/backarrow"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.037"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.053"
+        app:srcCompat="@drawable/barrow" />
+
     <TextView
         android:id="@+id/tv_instructions"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Enter your email to reset the PIN"
-        android:textSize="16sp"
-        android:textColor="@color/white"
+        android:layout_width="246dp"
+        android:layout_height="45dp"
         android:layout_margin="16dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:text="Enter your email to reset the PIN"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.43"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.043" />
 
-    <!-- Email input field -->
     <EditText
         android:id="@+id/et_email"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Enter your email"
-        android:textColor="@color/white"
-        android:inputType="textEmailAddress"
+        android:layout_width="315dp"
+        android:layout_height="50dp"
         android:layout_margin="16dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_instructions"
+        android:layout_marginTop="44dp"
+        android:hint="Enter your email"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/tv_instructions"
+        app:layout_constraintVertical_bias="0.197" />
 
-    <!-- New PIN input field -->
     <EditText
         android:id="@+id/et_new_pin"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="311dp"
+        android:layout_height="61dp"
         android:hint="Enter new 4-digit PIN"
-        android:textColor="@color/white"
         android:inputType="numberPassword"
         android:maxLength="4"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/et_email"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/tv_instructions"
+        app:layout_constraintVertical_bias="0.358" />
 
-    <!-- Reset PIN button -->
     <Button
         android:id="@+id/btn_reset_pin"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="251dp"
+        android:layout_height="50dp"
         android:text="Reset PIN"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/et_new_pin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/tv_instructions"
+        app:layout_constraintVertical_bias="0.511" />
 
-    <!-- Progress Bar (Loading Indicator) -->
     <ProgressBar
         android:id="@+id/progress_bar"
         android:layout_width="wrap_content"

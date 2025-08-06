@@ -1,59 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="16dp"
     android:background="@drawable/back">
 
-    <!-- App Title -->
+    <!-- Back Arrow (Placed in Top Left) -->
+    <ImageView
+        android:id="@+id/backarrow"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_margin="16dp"
+        android:src="@drawable/barrow"
+        android:layout_gravity="start|top" />
 
-    <!-- Description -->
-
-    <TextView
-        android:id="@+id/appTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         android:gravity="center"
-        android:text="AccessMaster"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:padding="16dp">
 
-    <TextView
-        android:id="@+id/appDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Send SMS and manage commands remotely."
-        android:textSize="16sp"
-        android:textColor="@color/white"
-        android:layout_marginBottom="24dp"
-        android:gravity="center" />
+        <TextView
+            android:id="@+id/appDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:gravity="center"
+            android:text="SMS, access location, make calls, and view contacts remotely."
+            android:textColor="@color/white"
+            android:textSize="16sp" />
 
-    <!-- Send SMS Button -->
-    <Button
-        android:id="@+id/btnSendSms"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Send SMS"
-        android:padding="12dp"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#6200EE"
-        android:textStyle="bold"
-        android:layout_marginBottom="16dp" />
+        <Button
+            android:id="@+id/btnSms"
+            android:layout_width="147dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#24B8A9"
+            android:padding="12dp"
+            android:text="SMS"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
 
-    <!-- Additional Info -->
-    <TextView
-        android:id="@+id/infoText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ensure permissions are granted to use SMS features."
-        android:textSize="14sp"
-        android:textColor="@color/white"
-        android:gravity="center"
-        android:padding="8dp" />
+        <Button
+            android:id="@+id/btnGetLocation"
+            android:layout_width="148dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#03A9F4"
+            android:padding="12dp"
+            android:text="Get Location"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/btnPhoneState"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#4CAF50"
+            android:padding="12dp"
+            android:text="Phone"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnViewContacts"
+            android:layout_width="146dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#FF5722"
+            android:padding="12dp"
+            android:text="View Contacts"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/infoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Ensure permissions are granted to use all features.\n\n\n NOTE: By clicking these, you will grant permission to get access to use the features."
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</FrameLayout>

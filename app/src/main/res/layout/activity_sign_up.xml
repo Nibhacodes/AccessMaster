@@ -7,23 +7,17 @@
     android:background="@drawable/back"
     tools:context=".SignUp">
 
-    <!-- "Create Your Account" Text -->
-
-    <!-- Book Image -->
-
-    <!-- Terms & Services Text -->
-
-    <!-- Username Input -->
-
-    <!-- Email Input -->
-
-    <!-- Mobile Number Input -->
-
-    <!-- Password Input -->
-
-    <!-- Send Verification Email Button -->
-
-    <!-- Sign Up Button -->
+    <ImageView
+        android:id="@+id/backarrow"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.034"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.054"
+        app:srcCompat="@drawable/barrow" />
 
     <TextView
         android:layout_width="336dp"
@@ -33,13 +27,14 @@
         android:text="@string/create_your_account"
         android:textColor="@android:color/white"
         android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.15"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.048"
+        app:layout_constraintVertical_bias="0.024"
         app:layout_constraintWidth_percent="0.6" />
 
     <ImageView
@@ -86,6 +81,7 @@
         app:layout_constraintHeight_percent="0.07"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.425"
         app:layout_constraintWidth_percent="0.75" />
 
     <EditText
@@ -101,7 +97,7 @@
         app:layout_constraintHeight_percent="0.07"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.425"
+        app:layout_constraintVertical_bias="0.35"
         app:layout_constraintWidth_percent="0.75" />
 
     <EditText
@@ -133,27 +129,26 @@
         app:layout_constraintHeight_percent="0.07"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.35"
         app:layout_constraintWidth_percent="0.75" />
 
     <Button
         android:id="@+id/sendVerificationButton"
-        android:layout_width="227dp"
-        android:layout_height="67dp"
+        android:layout_width="259dp"
+        android:layout_height="53dp"
         android:text="Send Verification Email"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.08"
-        app:layout_constraintHorizontal_bias="0.135"
+        app:layout_constraintHorizontal_bias="0.163"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.868"
+        app:layout_constraintVertical_bias="0.83"
         app:layout_constraintWidth_percent="0.5" />
 
     <Button
         android:id="@+id/button9"
-        android:layout_width="152dp"
-        android:layout_height="56dp"
+        android:layout_width="180dp"
+        android:layout_height="54dp"
         android:background="@drawable/button"
         android:drawableLeft="@drawable/signup"
         android:onClick="navigateToLockPin"
@@ -162,10 +157,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.08"
-        app:layout_constraintHorizontal_bias="0.876"
+        app:layout_constraintHorizontal_bias="0.864"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.954"
+        app:layout_constraintVertical_bias="0.94"
         app:layout_constraintWidth_percent="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

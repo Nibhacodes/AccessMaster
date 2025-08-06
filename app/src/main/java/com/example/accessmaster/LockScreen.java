@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,6 +25,11 @@ public class LockScreen extends AppCompatActivity {
         adminComponent = new ComponentName(this, MyDeviceAdminReceiver.class);
 
         Button btnActivateAdmin = findViewById(R.id.btn_activate_admin);
+        ImageView backarrow = findViewById(R.id.backarrow);
+
+        backarrow.setOnClickListener(v -> {
+            finish(); // Navigates to the previous activity
+        });
 
         btnActivateAdmin.setOnClickListener(new View.OnClickListener() {
             @Override

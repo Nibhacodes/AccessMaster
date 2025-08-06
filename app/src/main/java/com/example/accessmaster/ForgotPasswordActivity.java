@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,6 +37,11 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         userRepository = new UserRepository(this);
 
         submitButton.setOnClickListener(v -> validateAndResetPassword());
+        ImageView backarrow = findViewById(R.id.backarrow);
+
+        backarrow.setOnClickListener(v -> {
+            finish(); // Navigates to the previous activity
+        });
     }
 
     private void validateAndResetPassword() {

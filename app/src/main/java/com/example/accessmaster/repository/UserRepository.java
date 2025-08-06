@@ -51,11 +51,15 @@ public class UserRepository {
         });
     }
 
-    public void getUserByEmail(String email, DatabaseCallbackUser callback) {
+    public void getUserByEmail(String email, DatabaseUserCallback callback) {
         executorService.execute(() -> {
             User user = userDao.getUserByEmail(email);
-            callback.onResult(user);
+            callback.onUserResult(user); // ✅ Returns null if user is not found
         });
+    }
+
+    public interface DatabaseUserCallback {
+        void onUserResult(User user);
     }
 
     public void deleteUserByEmail(String email, DatabaseCallback callback) {

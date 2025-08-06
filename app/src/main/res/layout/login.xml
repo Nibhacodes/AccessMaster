@@ -6,13 +6,29 @@
     android:layout_height="match_parent"
     android:background="@drawable/back">
 
-    <!-- "Login" Text -->
+    <ImageView
+        android:id="@+id/backarrow"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.034"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.054"
+        app:srcCompat="@drawable/barrow" />
 
-    <!-- "Enter Credentials" Text -->
+    <!-- Book Image -->
+
+    <!-- Email Input -->
+
+    <!-- Password Input -->
+
+    <!-- Login Button -->
 
     <TextView
-        android:layout_width="206dp"
-        android:layout_height="73dp"
+        android:layout_width="175dp"
+        android:layout_height="81dp"
         android:gravity="center"
         android:padding="10dp"
         android:text="Login"
@@ -22,19 +38,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.1"
-        app:layout_constraintHorizontal_bias="0.014"
+        app:layout_constraintHorizontal_bias="0.173"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.051"
+        app:layout_constraintVertical_bias="0.024"
         app:layout_constraintWidth_percent="0.5" />
-
-    <!-- Book Image -->
-
-    <!-- Email Input -->
-
-    <!-- Password Input -->
-
-    <!-- Login Button -->
 
     <TextView
         android:id="@+id/textView"

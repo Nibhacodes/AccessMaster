@@ -67,7 +67,7 @@ public class SoundProfileService extends Service {
                         if (storedPin == null) {
                             sendSms(sender, "PIN not found.");
                         } else if (storedPin.equals(lockPin)) {
-                            changeSoundProfile();
+                            changeSoundProfile(sender);
                         } else {
                             sendSms(sender, "Invalid lock pin.");
                         }
@@ -82,35 +82,32 @@ public class SoundProfileService extends Service {
             sendSms(sender, "Error processing request.");
         }
     }
-    private void changeSoundProfile() {
+    private void changeSoundProfile(String sender) {
         AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-        // ✅ Fix for 'ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS' not resolving
+        // ✅ Check for DND permission
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (!notificationManager.isNotificationPolicyAccessGranted()) {
                 Log.e(TAG, "❌ DND Access Not Granted! Requesting Permission.");
-
-                // Open DND settings to allow access
-                Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
+                Intent intent = new Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
-
-                return;  // Exit method to prevent crash
+                return; // Exit method
             }
         }
 
-        // ✅ Fix for 'changeSoundProfile()' method signature issue
         int currentMode = audioManager.getRingerMode();
 
         if (currentMode == AudioManager.RINGER_MODE_SILENT || currentMode == AudioManager.RINGER_MODE_VIBRATE) {
             audioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
             Log.d(TAG, "🔊 Changed Sound Profile to Normal Mode.");
+            sendSms(sender, "Sound profile changed to Ringing mode.");
         } else {
-            Log.d(TAG, "✅ Phone is already in Normal Mode.");
+            Log.d(TAG, "✅ Phone is already in Ringing Mode.");
+            sendSms(sender, "Phone is already in Ringing mode.");
         }
     }
-
     private void sendSms(String phoneNumber, String message) {
         try {
             SmsManager smsManager = SmsManager.getDefault();

@@ -22,7 +22,9 @@ import com.example.accessmaster.utils.SharedPrefUtils;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.concurrent.Executor;
 
 
@@ -169,7 +171,7 @@ public class ContactService extends Service {
                 sendSms(sender, "PIN not found.");
             } else if (storedPin.equals(lockPin)) {
                 Log.d("DB_FETCH", "PIN is valid.");
-                String contactNumber = getContactNumber(getApplicationContext(), contactName);
+                String contactNumber = getContactNumbers(getApplicationContext(), contactName);
                 if (contactNumber != null) {
                     Log.d(TAG, "handleContactCommand: Contact found - " + contactName + ": " + contactNumber);
                     sendSms(sender, "Contact found: " + contactName + " - " + contactNumber);
@@ -184,55 +186,91 @@ public class ContactService extends Service {
         });
     }
 
-    private String getContactNumber(Context context, String contactName) {
+    private String getContactNumbers(Context context, String contactName) {
         try {
-            Log.d(TAG, "getContactNumber: Searching for contact - " + contactName);
+            Log.d(TAG, "getContactNumbers: Searching for contact - " + contactName);
             ContentResolver resolver = context.getContentResolver();
+            HashSet<String> uniqueNumbers = new HashSet<>();
+            StringBuilder result = new StringBuilder();
+
             Cursor cursor = resolver.query(
                     ContactsContract.Contacts.CONTENT_URI,
                     null,
-                    ContactsContract.Contacts.DISPLAY_NAME + " LIKE ?",
-                    new String[]{"%" + contactName + "%"},
+                    "LOWER(" + ContactsContract.Contacts.DISPLAY_NAME + ") LIKE ?",
+                    new String[]{"%" + contactName.toLowerCase() + "%"},
                     null
             );
 
             if (cursor != null && cursor.moveToFirst()) {
-                String contactId = cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.Contacts._ID));
-                Cursor phoneCursor = resolver.query(
-                        ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-                        null,
-                        ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?",
-                        new String[]{contactId},
-                        null
-                );
+                do {
+                    String contactId = cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.Contacts._ID));
+                    String fullName = cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME));
 
-                if (phoneCursor != null && phoneCursor.moveToFirst()) {
-                    String number = phoneCursor.getString(phoneCursor.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.NUMBER));
-                    phoneCursor.close();
-                    cursor.close();
-                    Log.d(TAG, "getContactNumber: Contact found - " + contactName + ": " + number);
-                    return number;
-                }
+                    Cursor phoneCursor = resolver.query(
+                            ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                            null,
+                            ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?",
+                            new String[]{contactId},
+                            null
+                    );
 
-                if (phoneCursor != null) phoneCursor.close();
+                    if (phoneCursor != null && phoneCursor.moveToFirst()) {
+                        StringBuilder numbers = new StringBuilder();
+                        do {
+                            String number = phoneCursor.getString(phoneCursor.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.NUMBER))
+                                    .replaceAll("\\s+", ""); // Remove spaces for duplicate prevention
+
+                            if (uniqueNumbers.add(number)) { // Ensure unique numbers
+                                if (numbers.length() > 0) {
+                                    numbers.append(", ");
+                                }
+                                numbers.append(number);
+                            }
+                        } while (phoneCursor.moveToNext());
+
+                        if (numbers.length() > 0) {
+                            if (result.length() > 0) {
+                                result.append("\n"); // New line between contacts
+                            }
+                            result.append(fullName).append(" - ").append(numbers);
+                        }
+                        phoneCursor.close();
+                    }
+                } while (cursor.moveToNext());
+                cursor.close();
             }
 
-            if (cursor != null) cursor.close();
-            Log.e(TAG, "getContactNumber: Contact not found - " + contactName);
-        } catch (Exception e) {
-            Log.e(TAG, "getContactNumber: Error retrieving contact number.", e);
-        }
-        return null;
-    }
+            if (result.length() > 0) {
+                return ":\n" + result.toString(); // Only one "Contact found"
+            }
 
+            return "Contact not found: " + contactName; // Return proper message if no contacts match
+        } catch (Exception e) {
+            Log.e(TAG, "getContactNumbers: Error retrieving contact numbers.", e);
+            return "Error retrieving contact information.";
+        }
+    }
     private void sendSms(String phoneNumber, String message) {
         try {
             Log.d(TAG, "sendSms: Sending SMS to " + phoneNumber + " with message: " + message);
+
             SmsManager smsManager = SmsManager.getDefault();
-            smsManager.sendTextMessage(phoneNumber, null, message, null, null);
+
+            // Force Unicode if the message contains emojis or special characters
+            boolean containsSpecialCharacters = !message.matches("\\A\\p{Print}*\\z");
+
+            if (containsSpecialCharacters) {
+                Log.d(TAG, "sendSms: Detected emojis or special characters, sending in Unicode.");
+                ArrayList<String> messageParts = smsManager.divideMessage(message);
+                smsManager.sendMultipartTextMessage(phoneNumber, null, messageParts, null, null);
+            } else {
+                Log.d(TAG, "sendSms: No special characters detected, sending normally.");
+                smsManager.sendTextMessage(phoneNumber, null, message, null, null);
+            }
+
             Log.d(TAG, "sendSms: SMS successfully sent to " + phoneNumber);
         } catch (Exception e) {
-            Log.e(TAG, "sendSms: Failed to send SMS to " + phoneNumber, e);
+            Log.e(TAG, "sendSms: Failed to send SMS", e);
         }
     }
 
